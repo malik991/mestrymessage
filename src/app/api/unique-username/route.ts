@@ -17,7 +17,7 @@ export async function GET(req: Request) {
       username: searchParams.get("username"),
     };
     // check this username from zod
-    console.log("query: ", queryParam);
+    //console.log("query: ", queryParam);
 
     const isUserQualify = userNameQuerySchema.safeParse(queryParam); // safeParse check the schema
     //console.log("zod username: ", isUserQualify); //TODO: remove
