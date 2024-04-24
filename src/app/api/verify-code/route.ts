@@ -32,7 +32,7 @@ export async function POST(req: Request) {
     const existingUser = await UserModel.findOne({ username });
     if (!existingUser) {
       return Response.json(
-        { success: false, message: "user not found" },
+        { success: false, message: "user not found, please signup again" },
         { status: 400 }
       );
     }
