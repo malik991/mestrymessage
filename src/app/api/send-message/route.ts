@@ -6,6 +6,8 @@ export async function POST(req: Request) {
   try {
     await myDbConnection();
     const { username, content } = await req.json();
+    console.log("check user name: ", username);
+
     const getUser = await UserModel.findOne({ username });
     if (!getUser) {
       return Response.json(
@@ -27,8 +29,12 @@ export async function POST(req: Request) {
       );
     }
 
+    console.log("getuser: ", getUser);
+
     // prepare a new messages
     const newMessage = { content, createdAt: new Date() };
+    console.log("message content: ", newMessage);
+
     // push this messgae to user messgaes Array
     getUser.messages.push(newMessage as Message);
     await getUser.save();
